@@ -1,4 +1,6 @@
+require File.expand_path(File.join(File.dirname(__FILE__), "haiku", "dictionary"))
 require File.expand_path(File.join(File.dirname(__FILE__), "haiku", "syllables"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "config", "initializers", "mongo"))
 
 class Haiku
   HAIKU_FIRST_LINE_SYLLABLES = 5

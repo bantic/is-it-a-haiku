@@ -8,7 +8,9 @@
 class IsItAHaikuApp < Sinatra::Application
   require "lib/haiku"
   require "haml"
-
+  
+  @@haikus = $mongo.collection("haikus")
+  
   configure :production do
     # Configure stuff here you'll want to
     # only be run at Heroku at boot
@@ -19,13 +21,20 @@ class IsItAHaikuApp < Sinatra::Application
 
   # Quick test
   get '/' do
-    # haml :index
-    val = require('dbm')
-    "val: #{val}. dbm: #{DBM}"
+    haml :index
   end
   
   post '/' do
-    "The text is a haiku? #{Haiku.haiku?(params[:haiku]) ? "YES" : "NO"}"
+    text = params[:haiku]
+    is_it_a_haiku = Haiku.haiku?(text)
+    id = @@haikus.save(:text => text, :haiku => is_it_a_haiku, :timestamp => Time.now)
+    redirect "/haikus/#{id}"
+  end
+  
+  get '/haikus/:id' do
+    if @haiku = @@haikus.find_one(BSON::ObjectID.from_string(params[:id]))
+      haml :haiku
+    end
   end
 
   # Test at <appname>.heroku.com

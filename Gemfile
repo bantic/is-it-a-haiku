@@ -1,10 +1,11 @@
 # A sample Gemfile
 source :gemcutter
 #
-# gem "rails"
 gem "sinatra"
 gem "haml"
-gem "dbm"
+gem "mongo"
+gem "bson"
+gem "bson_ext"
 
 group :test do
   gem "rspec"

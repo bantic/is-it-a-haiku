@@ -18,5 +18,14 @@ describe Syllables do
       Syllables.count("Crunch, of today’s new found day").should == 7
       Syllables.count("At bay; and hope for the best").should == 7
     end
+    
+    context "error handling" do
+      it "should not blow up if the word can't be found" do
+        lambda { Syllables.count("sdfsdfhisdf") }.should_not raise_error
+      end
+      it "should be 0 for words that can't be found" do
+        Syllables.count("sdfsdfhisdf").should == 0
+      end
+    end
   end
 end

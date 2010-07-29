@@ -29,6 +29,18 @@ describe Haiku do
                       Buds blooming in May
       EOH
       
+      haikus << <<-EOH
+      Communicating
+      In a new language I speak
+      Without artifice
+      EOH
+      
+      haikus << <<-EOH
+      A single red leaf
+      Flutters softly to the ground
+      And lands in silence
+      EOH
+      
       haikus.each {|haiku| Haiku.haiku?(haiku).should be_true }
     end
     
@@ -92,6 +104,17 @@ describe Haiku do
       EOH
       
       Haiku.haiku?(haiku).should be_false
+    end
+  end
+  
+  context "error handling" do
+    it "should not blow up if the text is weird" do
+      text = <<-EOT
+         => {"_id"=>BSON::ObjectID('4c51c89b548fc30bf8000001'), "word"=>"theword"} 
+        ruby-1.8.7-p174 > c.find_one(ObjectID.from_string("4c51c89b548fc30bf8000001"))
+        NameError: uninitialized constant ObjectID
+      EOT
+      lambda { Haiku.haiku?(text) }.should_not raise_error
     end
   end
 end

@@ -1,5 +1,3 @@
-require 'dbm'
-
 class Syllables
   class LookUpError < IndexError; end
   
@@ -21,21 +19,20 @@ class Syllables
     
     def count_word(word)
       word.upcase!
-      begin
-        pronounce = dictionary.fetch(word)
-      rescue IndexError
+
+      unless syllables = dictionary.fetch(word)
         if word =~ /'/
           word = word.delete "'"
-          retry
+          syllables = count_word(word)
         end
-        raise LookUpError, "word #{word} not in dictionary"
       end
       
-      pronounce.split(/-/).grep(/^[AEIUO]/).length
+      raise LookUpError unless syllables
+      syllables
     end
     
     def dictionary
-      @@dbm ||= DBM.new( File.join(File.dirname(__FILE__), "..", "..", "db", "dict") )
+      @@db ||= Dictionary.new
     end
   end
 end
