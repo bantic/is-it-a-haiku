@@ -3,6 +3,7 @@ require 'mongo'
 
 $mongo = begin
   if ENV['MONGOHQ_URL']
+    uri = URI.parse(ENV['MONGOHQ_URL'])
     conn = Mongo::Connection.from_uri(ENV['MONGOHQ_URL'])
     conn.db(uri.path.gsub(/^\//, ''))
   else
