@@ -1,5 +1,6 @@
 text:
-= @haiku['text']
+%pre
+  &= @haiku['text']
 %br
 is it a haiku?
 = @haiku['haiku'] ? "YES" : "NO"
