@@ -41,6 +41,12 @@ describe Haiku do
       And lands in silence
       EOH
       
+      haikus << <<-EOH
+        August fourth, the date
+        That I'm unable to make
+        It's comedy's fate
+      EOH
+      
       haikus.each {|haiku| Haiku.haiku?(haiku).should be_true }
     end
     
