@@ -20,7 +20,6 @@ class IsItAHaikuApp < Sinatra::Application
     #       from ENV['DATABASE_URI'] (see /env route below)
   end
 
-  # Quick test
   get '/' do
     haml :index
   end
@@ -33,8 +32,16 @@ class IsItAHaikuApp < Sinatra::Application
   end
   
   get '/haikus/:id' do
-    if @haiku = @@haikus.find_one(BSON::ObjectID.from_string(params[:id]))
+    object_id = begin
+      BSON::ObjectID.from_string(params[:id])
+    rescue BSON::InvalidObjectID
+      pass
+    end
+    
+    if @haiku = @@haikus.find_one(object_id)
       haml :haiku
+    else
+      pass
     end
   end
   
