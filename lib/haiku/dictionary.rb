@@ -30,7 +30,7 @@ class Dictionary
     if result = @collection.find_one({:word => word, :lang => @lang})
       result['syllables']
     else
-      0
+      nil
     end
   end
 end

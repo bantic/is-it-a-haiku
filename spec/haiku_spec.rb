@@ -50,6 +50,24 @@ describe Haiku do
       haikus.each {|haiku| Haiku.haiku?(haiku).should be_true }
     end
     
+    it "should get some cases where haiku uses fake words" do
+      haikus = []
+      
+      haikus << <<-EOH
+        eight syllables make 
+        a haiku-ette, haiku-less. 
+        I am to I'm works.
+      EOH
+      
+      haikus << <<-EOH
+        August 4th, the date
+        That I'm unable to make
+        It's comedy's fate
+      EOH
+      
+      haikus.each {|haiku| Haiku.haiku?(haiku).should be_true }
+    end
+    
     it "should be true if there are blank lines" do
       haiku = <<-EOH
       As the wind does blow
