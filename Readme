@@ -1,0 +1,11 @@
+Type in some text and it will tell you if it's a haiku.
+
+Uses the CMU Pronouncing Dictionary for English:
+http://www.speech.cs.cmu.edu/cgi-bin/cmudict
+
+Planned/potential updates:
+ * spanish version
+ * guess syllabary for words not in the CMU dictionary (the gem Lingua can do this)
+ * fuzzy haiku matching -- if we can't determine the syllables in a word, say "maybe" instead of NO
+ * feedback to let me know when it's wrong
+ * show recent haikus
