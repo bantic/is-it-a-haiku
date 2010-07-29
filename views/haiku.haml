@@ -1,6 +1,15 @@
-text:
-%pre
-  &= @haiku['text']
-%br
-is it a haiku?
-= @haiku['haiku'] ? "YES" : "NO"
+.haiku
+  - haiku = escape_html(@haiku['text'])
+  = haiku.gsub("\n","<br />")
+
+.is_it_a_haiku{:class => (@haiku['haiku'] ? "yes" : "no")}
+  - if @haiku['haiku']
+    .japanese
+      &#12399;&#12356;&#12290;
+    .english
+      (Yes)
+  - else
+    .japanese
+      &#12358;&#12358;&#12435;
+    .english
+      (No)

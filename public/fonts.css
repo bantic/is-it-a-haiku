@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Lobster1.3Regular';
+  src: url('/fonts/Lobster_1.3-webfont.eot');
+  src: local('☺'), url('/fonts/Lobster_1.3-webfont.woff') format('woff'), url('/fonts/Lobster_1.3-webfont.ttf') format('truetype'), url('/fonts/Lobster_1.3-webfont.svg#webfontcOtP3oQb') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MatizRegular';
+  src: url('/fonts/Matiz-webfont.eot');
+  src: local('☺'), url('/fonts/Matiz-webfont.woff') format('woff'), url('/fonts/Matiz-webfont.ttf') format('truetype'), url('/fonts/Matiz-webfont.svg#webfontprdJ6fLr') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

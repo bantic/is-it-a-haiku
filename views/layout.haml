@@ -1,0 +1,28 @@
+%html
+  %head
+    %title Is it a Haiku?
+    %link{:rel => "stylesheet", :type => "text/css", :href => "http://yui.yahooapis.com/2.8.1/build/reset-fonts-grids/reset-fonts-grids.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/fonts.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/stylesheet.css"}
+
+    - api_key = "ABQIAAAAxWNpxzcfyhn7zYII6ArMwBQZcABOcofYLaBWOgl8JrRwPy2QURRtJKA47QXyDakJFP14iL0GfFXxcg"
+    / %script{:type => "text/javascript", :src => "http://www.google.com/jsapi?key=#{api_key}"}
+    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
+    
+  %body
+    #doc
+      #hd
+        %h1 
+          %a{:href => "/"}
+            Is it a Haiku?
+        
+      #bd
+        #yui-main
+          .yui-b
+            = yield
+      
+      #ft
+        Created by 
+        %a{:href => "http://twitter.com/bantic"} Cory
+        %span{:style => "width: 10px"} &nbsp;
+        %a{:href => "http://github.com/bantic/is-it-a-haiku"} Code

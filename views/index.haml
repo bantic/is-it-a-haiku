@@ -1,5 +1,8 @@
-Is it a haiku? you tell me
-
-%form{:action => "/", :method => "post"}
-  %textarea{:name => "haiku"}
-  %button{:type => "Submit"}
+#haiku_form
+  %form{:action => "/", :method => "post", :id => "form"}
+    .textarea 
+      %textarea{:name => "haiku", :class => "haiku"}="This is the first line\nand this is the second line\nand this is the third"
+    .submit 
+      #submit_button
+        ?
+      %script{:type => "text/javascript"} $("#submit_button").click(function() {$("#form").submit()})

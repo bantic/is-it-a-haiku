@@ -1,0 +1,77 @@
+body
+  background-color: #CCC
+
+#doc
+  background-color: #FFF
+  text-align: center
+  height: 100%
+
+#hd
+  padding-top: 40px
+  margin-bottom: 40px
+  
+#ft
+  margin-top: 60px
+  text-align: right
+  margin-right: 20px
+  margin-bottom: 0
+  font-size: 9px
+  
+  a
+    color: #000
+    text-decoration: none
+    font-weight: bold
+    
+    &:hover
+      text-decoration: underline
+    
+h1
+  font: 60px 'MatizRegular', Arial, sans-serif
+  a
+    color: #000
+    text-decoration: none
+
+    &:hover
+      -webkit-transition-duration: 0.2s
+      color: #CCC
+
+#haiku_form
+  textarea
+    padding: 10px
+    width: 600px
+    height: 175px
+    resize: none
+    text-align: center
+    overflow: auto
+  
+  .submit
+    margin-top: 20px
+    
+  #submit_button
+    cursor: pointer
+    width: 100px
+    font: 80px 'MatizRegular', Arial, sans-serif
+    margin: 0 auto
+    
+    &:hover
+      -webkit-transition-duration: 0.5s
+      color: #006633
+      
+.haiku
+  font: 36px 'Lobster1.3Regular', Arial, sans-serif
+  letter-spacing: 0
+  line-height: 50px
+
+.is_it_a_haiku
+  margin-top: 40px
+  
+  .japanese
+    font-size: 60px
+  .english
+    font-size: 12px
+    
+.is_it_a_haiku.yes
+  color: #006633
+  
+.is_it_a_haiku.no
+  color: #cc3333
