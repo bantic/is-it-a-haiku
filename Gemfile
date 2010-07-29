@@ -7,6 +7,10 @@ gem "mongo"
 gem "bson"
 gem "bson_ext"
 
+group :deployment do
+  gem "heroku"
+end
+
 group :test do
   gem "rspec"
 end
