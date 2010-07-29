@@ -1,7 +1,14 @@
 #haiku_form
   %form{:action => "/", :method => "post", :id => "form"}
-    .textarea 
-      %textarea{:name => "haiku", :class => "haiku"}="This is the first line\nand this is the second line\nand this is the third"
+    .textarea
+      %textarea{:name => "haiku", :class => "haiku default_input", :id => "textarea"}="This is the first line\nand this is the second line\nand this is the third"
+      %script{:type => "text/javascript"}
+        :plain
+          $("#textarea").focus(function() {
+            if ($("#textarea").val().match(/^This is the first/)) {
+              $("#textarea").val("").removeClass("default_input");
+            }
+          });
     .submit 
       #submit_button
         ?
