@@ -7,9 +7,9 @@
           $("#textarea").focus(function() {
             if ($("#textarea").hasClass("default_input")) {
               $("#textarea").val("").removeClass("default_input");
+              $("#submit_button").click(function() {$("#form").submit()})
             }
           });
     .submit 
       #submit_button
         ?
-      %script{:type => "text/javascript"} $("#submit_button").click(function() {$("#form").submit()})
