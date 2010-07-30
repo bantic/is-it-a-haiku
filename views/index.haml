@@ -1,11 +1,11 @@
 #haiku_form
   %form{:action => "/", :method => "post", :id => "form"}
     .textarea
-      %textarea{:name => "haiku", :class => "haiku default_input", :id => "textarea"}="This is the first line\nand this is the second line\nand this is the third"
+      %textarea{:name => "haiku", :class => "haiku default_input", :id => "textarea"}= @random_haiku
       %script{:type => "text/javascript"}
         :plain
           $("#textarea").focus(function() {
-            if ($("#textarea").val().match(/^This is the first/)) {
+            if ($("#textarea").hasClass("default_input")) {
               $("#textarea").val("").removeClass("default_input");
             }
           });

@@ -1,10 +1,3 @@
-# You'll need to require these if you
-# want to develop while running with ruby.
-# The config/rackup.ru requires these as well
-# for its own reasons.
-#
-# $ ruby heroku-sinatra-app.rb
-#
 class IsItAHaikuApp < Sinatra::Application
   require "lib/haiku"
   require "haml"
@@ -12,15 +5,8 @@ class IsItAHaikuApp < Sinatra::Application
   
   @@haikus = $mongo.collection("haikus")
   
-  configure :production do
-    # Configure stuff here you'll want to
-    # only be run at Heroku at boot
-
-    # TIP:  You can get you database information
-    #       from ENV['DATABASE_URI'] (see /env route below)
-  end
-
   get '/' do
+    @random_haiku = random_haiku
     haml :index
   end
   
@@ -48,5 +34,18 @@ class IsItAHaikuApp < Sinatra::Application
   get '/stylesheet.css' do
     content_type 'text/css', :charset => 'utf-8'
     sass :stylesheet
+  end
+  
+  helpers do
+    def random_haiku
+      random_haiku = begin
+        count = @@haikus.find(:haiku => true).count()
+        if count > 0
+          @@haikus.find(:haiku => true).limit(-1).skip(rand(count)).first()['text']
+        else
+          "This is the first line\nand this is the second line\nand this is the third"
+        end
+      end
+    end
   end
 end
