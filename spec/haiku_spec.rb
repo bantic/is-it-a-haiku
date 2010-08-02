@@ -71,6 +71,11 @@ describe Haiku do
         But I love him still
       EOH
 
+      haikus << <<-EOH
+        Silence--a strangled 
+        Telephone has forgotten 
+        That it should yet ring
+      EOH
       
       haikus.each {|haiku| Haiku.haiku?(haiku).should be_true }
     end

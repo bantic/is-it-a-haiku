@@ -10,7 +10,8 @@ class Syllables
       words = []
 
       text.gsub!("’","'")
-
+      text.gsub!("--"," -- ")
+      
       text.scan(/\b([a-z0-9][a-z\-']*)\b/i).each do |match|
         words.push match[0]
       end

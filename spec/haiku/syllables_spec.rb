@@ -25,6 +25,10 @@ describe Syllables do
       Syllables.count("At bay; and hope for the best").should == 7
     end
     
+    it "should break double-dashes into separate words" do
+      Syllables.count("Silence--a strangled").should == 5
+    end
+    
     context "fake words" do
       it "should guess them pretty well" do
         Syllables.count("haiku-ette").should == 3
