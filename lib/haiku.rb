@@ -9,14 +9,23 @@ class Haiku
   
   HAIKU_LINE_COUNT = 3
   
-  def self.haiku?(text)
-    text.strip!.gsub!(/\n+/,"\n")
+  class << self
+    def haiku?(text)
+      text = clean_text(text)
 
-    lines = text.split("\n")
+      lines = text.split("\n")
     
-    return false if lines.size != HAIKU_LINE_COUNT
+      return false if lines.size != HAIKU_LINE_COUNT
     
-    syllables = lines.collect {|line| Syllables.count(line)} 
-    syllables == [HAIKU_FIRST_LINE_SYLLABLES, HAIKU_SECOND_LINE_SYLLABLES, HAIKU_THIRD_LINE_SYLLABLES]
+      syllables = lines.collect {|line| Syllables.count(line)} 
+      syllables == [HAIKU_FIRST_LINE_SYLLABLES, HAIKU_SECOND_LINE_SYLLABLES, HAIKU_THIRD_LINE_SYLLABLES]
+    end
+  
+    def clean_text(text)
+      return "" if text.nil?
+      
+      text = text.strip
+      text = text.gsub(/\n+/,"\n")
+    end
   end
 end
