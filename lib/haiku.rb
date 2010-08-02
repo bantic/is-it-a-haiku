@@ -10,7 +10,7 @@ class Haiku
   HAIKU_LINE_COUNT = 3
   
   def self.haiku?(text)
-    text.gsub!(/\n+/,"\n")
+    text.strip!.gsub!(/\n+/,"\n")
 
     lines = text.split("\n")
     

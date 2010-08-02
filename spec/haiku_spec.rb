@@ -64,6 +64,13 @@ describe Haiku do
         That I'm unable to make
         It's comedy's fate
       EOH
+
+      haikus << <<-EOH
+        George is super cute
+        And sometimes very naughty
+        But I love him still
+      EOH
+
       
       haikus.each {|haiku| Haiku.haiku?(haiku).should be_true }
     end
@@ -78,6 +85,11 @@ describe Haiku do
       EOH
       
       Haiku.haiku?(haiku).should be_true
+    end
+    
+    it "should get rid of spare blankspace" do
+      text = "george is super cute\r\nAnd sometimes very naughty\r\nBut I love him still\r\n "
+      Haiku.haiku?(text).should be_true
     end
     
     it "should be false when the number of syllables in line 1 is wrong" do

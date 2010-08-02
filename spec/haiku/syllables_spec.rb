@@ -6,10 +6,16 @@ describe Syllables do
       Syllables.count("hello").should == 2
       Syllables.count("eyes").should == 1
       Syllables.count("nevertheless").should == 4
+      Syllables.count("Cory").should == 2
+      Syllables.count("naughty").should == 2
+      Syllables.count("George").should == 1
     end
   
     it "should get count of multiple words correct" do
       Syllables.count("hello there").should == 3
+      Syllables.count("And sometimes very naughty").should == 7
+      Syllables.count("But I love him still").should == 5
+      Syllables.count("George is super cute").should == 5
     end
   
     it "should handle some simple punctuation" do
