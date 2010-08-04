@@ -5,13 +5,16 @@ class IsItAHaikuApp < Sinatra::Application
   
   @@haikus = $mongo.collection("haikus")
   
-  configure :production, :staging do 
+  configure :production do
     require "exceptional"
-    require "lib/exceptional"
-    exceptional_api_key = ENV['EXCEPTIONAL_API_KEY'] 
-    ::Exceptional.configure(exceptional_api_key) 
-    ::Exceptional::Config.enabled = true 
-    ::Exceptional.logger.info "Enabling Exceptional for Sinatra" 
+    require "json"
+
+    set :raise_errors, false
+    Exceptional.configure ENV['EXCEPTIONAL_API_KEY']
+    Exceptional::Remote.startup_announce(::Exceptional::ApplicationEnvironment.to_hash('sinatra'))
+    error do
+      Exceptional::Catcher.handle_with_rack(request.env['sinatra.error'],request.env, request)
+    end
   end
   
   get '/' do
