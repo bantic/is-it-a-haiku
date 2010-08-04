@@ -1,7 +1,7 @@
 #haiku_form
   %form{:action => "/", :method => "post", :id => "form"}
     .textarea
-      %textarea{:name => "haiku", :class => "haiku default_input", :id => "textarea"}= @random_haiku
+      %textarea{:name => "haiku", :class => "haiku default_input", :id => "textarea"}= @random_haiku['text']
       %script{:type => "text/javascript"}
         :plain
           $("#textarea").focus(function() {

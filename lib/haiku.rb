@@ -7,6 +7,10 @@ class Haiku
   HAIKU_SECOND_LINE_SYLLABLES = 7
   HAIKU_THIRD_LINE_SYLLABLES = 5
   
+  LINE_SYLLABLE_COUNTS = [ HAIKU_FIRST_LINE_SYLLABLES, 
+                           HAIKU_SECOND_LINE_SYLLABLES, 
+                           HAIKU_THIRD_LINE_SYLLABLES ]
+  
   HAIKU_LINE_COUNT = 3
   
   class << self
@@ -18,7 +22,7 @@ class Haiku
       return false if lines.size != HAIKU_LINE_COUNT
     
       syllables = lines.collect {|line| Syllables.count(line)} 
-      syllables == [HAIKU_FIRST_LINE_SYLLABLES, HAIKU_SECOND_LINE_SYLLABLES, HAIKU_THIRD_LINE_SYLLABLES]
+      syllables == LINE_SYLLABLE_COUNTS
     end
   
     def clean_text(text)

@@ -1,6 +1,12 @@
 body
   background-color: #CCC
 
+a
+  color: #000
+  text-decoration: none
+  font-weight: bold
+
+
 #doc
   background-color: #FFF
   text-align: center
@@ -9,6 +15,11 @@ body
 #hd
   padding-top: 40px
   margin-bottom: 40px
+
+#ft
+  position: absolute
+  bottom: 10px
+  margin-left: 48em
   
 #attribution
   position: fixed
@@ -18,9 +29,6 @@ body
   font-size: 12px
   
   a
-    color: #000
-    text-decoration: none
-    font-weight: bold
     
     &:hover
       text-decoration: underline
@@ -28,8 +36,7 @@ body
 h1
   font: 60px 'MatizRegular', Arial, sans-serif
   a
-    color: #000
-    text-decoration: none
+    font-weight: normal
 
     &:hover
       -webkit-transition-duration: 0.2s
@@ -59,7 +66,23 @@ h1
     &:hover
       -webkit-transition-duration: 0.5s
       color: #006633
-      
+
+.broken_haiku
+  width: 80%
+  background-color: #CCC
+  padding: 5px
+  margin: 10px auto
+  
+  li
+    margin-bottom: 5px
+  
+  .lines_error
+    border: 2px solid red
+    
+  .line_error
+    font-weight: bold
+    color: #FF0000
+
 .haiku
   font: 36px 'Lobster1.3Regular', Arial, sans-serif
   letter-spacing: 0

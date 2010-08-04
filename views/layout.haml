@@ -6,6 +6,7 @@
     %link{:rel => "stylesheet", :type => "text/css", :href => "/stylesheet.css"}
 
     %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
+    %script{:type => "text/javascript", :src => "/javascripts/application.js"}
     
   %body
     #doc
@@ -18,9 +19,14 @@
         #yui-main
           .yui-b
             = yield
-
+      
+      #ft
+        .more
+          %a{:href => "/haikus"} Random haiku &raquo;
+        
       #attribution
-        Created by 
-        %a{:href => "http://twitter.com/bantic"} Cory
-        %span{:style => "width: 10px"} &nbsp;
-        %a{:href => "http://github.com/bantic/is-it-a-haiku"} Code
+        %a{:href => "http://github.com/bantic/is-it-a-haiku"} Created
+        %br
+        by
+        %br
+        %a{:href => "http://twitter.com/bantic"} Cory Forsyth

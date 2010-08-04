@@ -11,9 +11,9 @@ class IsItAHaikuApp < Sinatra::Application
   end
   
   post '/' do
-    text = params[:haiku]
+    text          = params[:haiku]
     is_it_a_haiku = Haiku.haiku?(text)
-    id = @@haikus.save(:text => text, :haiku => is_it_a_haiku, :timestamp => Time.now)
+    id            = @@haikus.save(:text => text, :haiku => is_it_a_haiku, :timestamp => Time.now)
     redirect "/haikus/#{id}"
   end
   
@@ -31,9 +31,38 @@ class IsItAHaikuApp < Sinatra::Application
     end
   end
   
+  get '/haikus' do
+    haiku = random_haiku
+    puts haiku.inspect
+    if haiku['_id']
+      redirect "/haikus/#{random_haiku['_id']}" 
+    else
+      redirect "/"
+    end
+  end
+  
   get '/stylesheet.css' do
     content_type 'text/css', :charset => 'utf-8'
     sass :stylesheet
+  end
+  
+  get "/broken" do
+    @haikus = @@haikus.find(:haiku => false, :dismissed => {"$ne" => true}).limit(10)
+    haml :broken
+  end
+  
+  post "/dismiss/:id" do
+    object_id = begin
+      BSON::ObjectID.from_string(params[:id])
+    rescue BSON::InvalidObjectID
+      pass
+    end
+    
+    if @haiku = @@haikus.find_one(object_id)
+      @haiku[:dismissed] = true
+      @@haikus.save(@haiku)
+    end
+    ""
   end
   
   helpers do
@@ -41,9 +70,9 @@ class IsItAHaikuApp < Sinatra::Application
       random_haiku = begin
         count = @@haikus.find(:haiku => true).count()
         if count > 0
-          @@haikus.find(:haiku => true).limit(-1).skip(rand(count)).first()['text']
+          @@haikus.find(:haiku => true).limit(-1).skip(rand(count)).first()
         else
-          "This is the first line\nand this is the second line\nand this is the third"
+          {'text' => "This is the first line\nand this is the second line\nand this is the third"}
         end
       end
     end

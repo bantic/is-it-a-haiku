@@ -1,0 +1,15 @@
+- @haikus.each do |haiku|
+  .broken_haiku{:id => haiku['_id']}
+    - lines = haiku['text'].split("\n")
+    - lines_error = lines.size != Haiku::HAIKU_LINE_COUNT
+    %ul{ :class => lines_error ? "lines_error" : "" }
+      - lines.each_with_index do |line, idx|
+        - line_syllables = Syllables.count(line)
+        - line_error_class = line_syllables == Haiku::LINE_SYLLABLE_COUNTS[idx] ? "" : "line_error"
+        %li{:class => lines_error ? "" : line_error_class}
+          = "#{line} (#{Syllables.count(line)})"
+          %br
+          - Syllables.words_from_text(line).each do |word|
+            %span{:style => "font-size: smaller"}= "#{word} (#{Syllables.count(word)})" 
+    %div
+      %a{:href => "##{haiku['_id']}", :class => "dismiss"} Dismiss
