@@ -2,11 +2,12 @@ class IsItAHaikuApp < Sinatra::Application
   require "lib/haiku"
   require "haml"
   require "sass"
-  require "lib/exceptional"
   
   @@haikus = $mongo.collection("haikus")
   
   configure :production, :staging do 
+    require "exceptional"
+    require "lib/exceptional"
     exceptional_api_key = ENV['EXCEPTIONAL_API_KEY'] 
     ::Exceptional.configure(exceptional_api_key) 
     ::Exceptional::Config.enabled = true 
