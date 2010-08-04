@@ -30,6 +30,10 @@ class IsItAHaikuApp < Sinatra::Application
       pass
     end
   end
+
+  get "/raise" do
+     raise "Uh-oh!"
+  end
   
   get '/haikus' do
     haiku = random_haiku
