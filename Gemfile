@@ -10,7 +10,6 @@ gem "exceptional"
 
 group :deployment do
   gem "heroku"
-  gem "bundler", ">=1.0.0.rc.3"
 end
 
 group :test do
