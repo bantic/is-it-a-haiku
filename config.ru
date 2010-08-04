@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler'
-Bundler.setup
+require 'bundler/setup'
 
 require 'sinatra'
 require 'is_it_a_haiku_app'
