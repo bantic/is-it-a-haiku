@@ -1,9 +1,11 @@
 class Dictionary
   attr_accessor :collection
   
+  def self.collection
+    @@collection ||= $mongo.collection("pronunciations")
+  end
+  
   def self.create(dict_file, lang="en")
-    collection = $mongo.collection("pronunciations")
-    
     IO.foreach( dict_file ).each do |line|
       next if line !~ /^[A-Z]/
       line.chomp!
@@ -13,9 +15,15 @@ class Dictionary
       syllables = phonemes.grep(/^[AEIUO]/).length
       
       puts "#{word} #{syllables} (#{lang})"
-      collection.save({:word => word, :syllables => syllables, :lang => lang})
+      update(word, syllables, lang)
     end
     collection.create_index([['word',1],['lang',1]])
+  end
+  
+  def self.update(word, syllables, lang="en")
+    puts "#{word} #{syllables} (#{lang})"
+    
+    collection.save({:word => word, :syllables => syllables, :lang => lang})
   end
   
   def initialize(lang="en")
