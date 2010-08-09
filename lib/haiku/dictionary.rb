@@ -23,7 +23,7 @@ class Dictionary
   def self.update(word, syllables, lang="en")
     puts "#{word} #{syllables} (#{lang})"
     
-    collection.save({:word => word, :syllables => syllables, :lang => lang})
+    collection.save({:word => word.upcase, :syllables => syllables.to_i, :lang => lang})
   end
   
   def initialize(lang="en")

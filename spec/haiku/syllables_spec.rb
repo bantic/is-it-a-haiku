@@ -9,6 +9,7 @@ describe Syllables do
       Syllables.count("Cory").should == 2
       Syllables.count("naughty").should == 2
       Syllables.count("George").should == 1
+      Syllables.count("pseudointellectual").should == 7
     end
   
     it "should get count of multiple words correct" do
