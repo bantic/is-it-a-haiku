@@ -4,11 +4,12 @@ Uses the CMU Pronouncing Dictionary for English:
 http://www.speech.cs.cmu.edu/cgi-bin/cmudict
 
 Planned/potential updates:
+ * should be upserting syllable info into the dictionary, not saving new records
  * spanish version
  * fuzzy haiku matching -- if we can't determine the syllables in a word, say "maybe" instead of NO
- * feedback to let me know when it's wrong
- * show recent haikus
 
 recent updates:
+  * show recent haikus
+  * feedback to let me know when it's wrong
   * guess syllabary for words not in the CMU dictionary (borrowed code from gem Lingua to do this)
   
