@@ -25,7 +25,7 @@ class IsItAHaikuApp < Sinatra::Application
   post '/' do
     text          = params[:haiku]
     is_it_a_haiku = Haiku.haiku?(text)
-    id            = @@haikus.save(:text => text, :haiku => is_it_a_haiku, :timestamp => Time.now)
+    id            = @@haikus.save(:text => text, :haiku => is_it_a_haiku, :timestamp => Time.now, :ip => request.ip)
     redirect "/haikus/#{id}"
   end
   
@@ -45,6 +45,10 @@ class IsItAHaikuApp < Sinatra::Application
 
   get "/raise" do
      raise "Uh-oh!"
+  end
+  
+  get "/ip" do
+    "#{request.ip}"
   end
   
   get '/haikus' do
