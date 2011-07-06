@@ -8,6 +8,7 @@ gem "mongo_ext"
 gem "bson"
 gem "bson_ext"
 gem "exceptional"
+gem 'json'
 
 group :deployment do
   gem "heroku"
