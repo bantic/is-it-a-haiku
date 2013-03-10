@@ -19,6 +19,7 @@ end
 
 group :development do
   gem 'foreman'
+  gem 'bundler-audit'
 end
 
 group :test do

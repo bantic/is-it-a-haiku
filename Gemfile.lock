@@ -4,6 +4,8 @@ GEM
     bson (1.8.3)
     bson_ext (1.8.3)
       bson (~> 1.8.3)
+    bundler-audit (0.1.2)
+      bundler (~> 1.2)
     diff-lcs (1.2.1)
     exceptional (2.0.33)
       rack
@@ -45,6 +47,7 @@ PLATFORMS
 DEPENDENCIES
   bson
   bson_ext
+  bundler-audit
   exceptional
   foreman
   haml
