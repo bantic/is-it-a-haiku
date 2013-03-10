@@ -31,8 +31,8 @@ class IsItAHaikuApp < Sinatra::Application
   
   get '/haikus/:id' do
     object_id = begin
-      BSON::ObjectID.from_string(params[:id])
-    rescue BSON::InvalidObjectID
+      BSON::ObjectId.from_string(params[:id])
+    rescue BSON::InvalidObjectId
       pass
     end
     
@@ -73,8 +73,8 @@ class IsItAHaikuApp < Sinatra::Application
   
   post "/dismiss/:id" do
     object_id = begin
-      BSON::ObjectID.from_string(params[:id])
-    rescue BSON::InvalidObjectID
+      BSON::ObjectId.from_string(params[:id])
+    rescue BSON::InvalidObjectId
       pass
     end
     
