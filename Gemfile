@@ -11,8 +11,14 @@ gem "bson_ext"
 gem "exceptional"
 gem 'json'
 gem 'rake'
+gem 'rack-flash3'
+gem 'puma'
 
 group :deployment do
+end
+
+group :development do
+  gem 'foreman'
 end
 
 group :test do

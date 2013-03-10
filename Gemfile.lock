@@ -7,13 +7,19 @@ GEM
     diff-lcs (1.2.1)
     exceptional (2.0.33)
       rack
+    foreman (0.62.0)
+      thor (>= 0.13.6)
     haml (4.0.0)
       tilt
     json (1.7.7)
     mongo (1.8.3)
       bson (~> 1.8.3)
     mongo_ext (0.19.3)
+    puma (1.6.3)
+      rack (~> 1.2)
     rack (1.5.2)
+    rack-flash3 (1.0.3)
+      rack
     rack-protection (1.4.0)
       rack
     rake (10.0.3)
@@ -30,6 +36,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
+    thor (0.17.0)
     tilt (1.3.5)
 
 PLATFORMS
@@ -39,10 +46,13 @@ DEPENDENCIES
   bson
   bson_ext
   exceptional
+  foreman
   haml
   json
   mongo (>= 1.0.7)
   mongo_ext
+  puma
+  rack-flash3
   rake
   rspec
   sass

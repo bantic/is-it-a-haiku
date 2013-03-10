@@ -2,6 +2,10 @@ class IsItAHaikuApp < Sinatra::Application
   require "lib/haiku"
   require "haml"
   require "sass"
+  require "rack-flash"
+
+  enable :sessions
+  use Rack::Flash
   
   @@haikus = $mongo.collection("haikus")
   
@@ -51,11 +55,13 @@ class IsItAHaikuApp < Sinatra::Application
     "#{request.ip}"
   end
   
+  # redirect to a random haiku
   get '/haikus' do
     haiku = random_haiku
     puts haiku.inspect
     if haiku['_id']
-      redirect "/haikus/#{random_haiku['_id']}" 
+      flash[:show_random_link] = true
+      redirect "/haikus/#{random_haiku['_id']}"
     else
       redirect "/"
     end
