@@ -3,6 +3,7 @@ class IsItAHaikuApp < Sinatra::Application
   require "haml"
   require "sass"
   require "rack-flash"
+  require 'json'
 
   enable :sessions
   use Rack::Flash
@@ -58,13 +59,18 @@ class IsItAHaikuApp < Sinatra::Application
   # redirect to a random haiku
   get '/haikus' do
     haiku = random_haiku
-    puts haiku.inspect
     if haiku['_id']
       flash[:show_random_link] = true
       redirect "/haikus/#{random_haiku['_id']}"
     else
       redirect "/"
     end
+  end
+
+  get '/haikus/random.json' do
+    content_type :json
+    haiku = random_haiku
+    {:text => haiku['text']}.to_json
   end
   
   get '/stylesheet.css' do
