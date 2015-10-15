@@ -84,6 +84,7 @@ class IsItAHaikuApp < Sinatra::Application
   end
   
   post "/dismiss/:id" do
+    raise "not implemented (FIXME)"
     object_id = begin
       BSON::ObjectId.from_string(params[:id])
     rescue BSON::InvalidObjectId
