@@ -1,5 +1,5 @@
 class IsItAHaikuApp < Sinatra::Application
-  require "lib/haiku"
+  require "./lib/haiku"
   require "haml"
   require "sass"
   require "rack-flash"
